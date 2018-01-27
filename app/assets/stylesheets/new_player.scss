@@ -1,0 +1,41 @@
+.spreaders {
+  width: 80%;
+}
+
+.player-message {
+  color: #484848;
+  font-size: 4rem;
+}
+
+.input-player-name {
+  background-color: white;
+  border: none;
+  color: #4E4E4E;
+  font-family: 'RumbleBrave';
+  font-size: 4rem;
+  text-align: center;
+  width: 90%;
+}
+
+.input-player-name:focus {
+  outline: none;
+}
+
+.notice-text {
+  font-size: 2rem;
+}
+
+@media (max-width: 767px) {
+  .spreaders {
+    width: 100%;
+  }
+
+  .input-player-name {
+    font-size: 1.5rem;
+  }
+
+  .notice-text {
+    font-size: 1rem;
+  }
+}
+

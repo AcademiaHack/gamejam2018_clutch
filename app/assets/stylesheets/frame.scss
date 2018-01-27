@@ -1,3 +1,5 @@
+$square: 5rem;
+
 .frame {
   border: 10px solid #484848;
   padding: 20px;
@@ -6,8 +8,8 @@
 }
 
 .left-up-outer {
-  width: 70px;
-  height: 70px;
+  width: $square;
+  height: $square;
   border: 10px solid #484848;
   position: absolute;
   top: -10px;
@@ -15,8 +17,8 @@
 }
 
 .left-up-inner {
-  width: 70px;
-  height: 70px;
+  width: $square;
+  height: $square;
   border: 10px solid #484848;
   position: absolute;
   top: 20px;
@@ -24,8 +26,8 @@
 }
 
 .right-up-outer {
-  width: 70px;
-  height: 70px;
+  width: $square;
+  height: $square;
   border: 10px solid #484848;
   position: absolute;
   top: -10px;
@@ -33,8 +35,8 @@
 }
 
 .right-up-inner {
-  width: 70px;
-  height: 70px;
+  width: $square;
+  height: $square;
   border: 10px solid #484848;
   position: absolute;
   top: 20px;
@@ -42,8 +44,8 @@
 }
 
 .left-down-outer {
-  width: 70px;
-  height: 70px;
+  width: $square;
+  height: $square;
   border: 10px solid #484848;
   position: absolute;
   bottom: -10px;
@@ -51,8 +53,8 @@
 }
 
 .left-down-inner{
-  width: 70px;
-  height: 70px;
+  width: $square;
+  height: $square;
   border: 10px solid #484848;
   position: absolute;
   bottom: 20px;
@@ -60,8 +62,8 @@
 }
 
 .right-down-outer {
-  width: 70px;
-  height: 70px;
+  width: $square;
+  height: $square;
   border: 10px solid #484848;
   position: absolute;
   bottom: -10px;
@@ -69,8 +71,8 @@
 }
 
 .right-down-inner {
-  width: 70px;
-  height: 70px;
+  width: $square;
+  height: $square;
   border: 10px solid #484848;
   position: absolute;
   bottom: 20px;
@@ -82,4 +84,95 @@
   height: 100%;
   padding-top: 75px;
   padding-bottom: 75px;
+}
+
+@media (max-width: 767px) {
+  $square: 3rem;
+  $border: 0.5rem;
+
+  .frame {
+    border: $border solid #484848;
+    padding: calc(#{$border} * 2);
+    height: 100vh;
+    position: relative;
+  }
+
+  .left-up-outer {
+    width: $square;
+    height: $square;
+    border: $border solid #484848;
+    position: absolute;
+    top: -$border;
+    left: -$border;
+  }
+
+  .left-up-inner {
+    width: $square;
+    height: $square;
+    border: $border solid #484848;
+    position: absolute;
+    top: calc(#{$border} * 2);
+    left: calc(#{$border} * 2);
+  }
+
+  .right-up-outer {
+    width: $square;
+    height: $square;
+    border: $border solid #484848;
+    position: absolute;
+    top: -$border;
+    right: -$border;
+  }
+
+  .right-up-inner {
+    width: $square;
+    height: $square;
+    border: $border solid #484848;
+    position: absolute;
+    top: calc(#{$border} * 2);
+    right: calc(#{$border} * 2);
+  }
+
+  .left-down-outer {
+    width: $square;
+    height: $square;
+    border: $border solid #484848;
+    position: absolute;
+    bottom: -$border;
+    left: -$border;
+  }
+
+  .left-down-inner{
+    width: $square;
+    height: $square;
+    border: $border solid #484848;
+    position: absolute;
+    bottom: calc(#{$border} * 2);
+    left: calc(#{$border} * 2);
+  }
+
+  .right-down-outer {
+    width: $square;
+    height: $square;
+    border: $border solid #484848;
+    position: absolute;
+    bottom: -$border;
+    right: -$border;
+  }
+
+  .right-down-inner {
+    width: $square;
+    height: $square;
+    border: $border solid #484848;
+    position: absolute;
+    bottom: calc(#{$border} * 2);
+    right: calc(#{$border} * 2);
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
 }

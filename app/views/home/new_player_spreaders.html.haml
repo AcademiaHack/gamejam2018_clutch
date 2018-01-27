@@ -1,0 +1,9 @@
+.container.h-100
+  .row.align-items-center.h-100
+    .col-sm-12.text-center
+      .spreader-logo
+        = image_tag 'spreaders.svg', class: 'spreaders'
+      %input.mt-3{ type: 'text', class: 'input-player-name', placeholder: 'Insert your name' }
+      .notice
+        .notice-text.d-none.text-muted
+          %i= 'Insert your name, then hit enter'
