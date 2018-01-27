@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem "haml-rails", "~> 1.0"
 gem "paperclip", "~> 5.0.0"
 gem "annotate"
+gem 'bootstrap', '~> 4.0.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
