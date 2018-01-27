@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Clutch
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
+  %body
+    .frame
+      .left-up-outer
+      .left-up-inner
+      .right-up-outer
+      .right-up-inner
+      .left-down-outer
+      .left-down-inner
+      .right-down-outer
+      .right-down-inner
+      .content
+        = yield
