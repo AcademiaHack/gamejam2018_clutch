@@ -9,7 +9,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-touch": "^0.4.3"
+    "react-swipeable": "^4.2.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.11.1"

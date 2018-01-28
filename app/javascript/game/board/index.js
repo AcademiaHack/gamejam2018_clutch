@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Swipeable, defineSwipe } from 'react-touch';
+import Swipeable from 'react-swipeable'
 import Slot from '../slot';
 import Snake from '../snake';
 import Food from '../food';
 
 const DOWN = 40, UP = 38, LEFT = 37, RIGHT = 39;
-const BOARD_SIZE = 20;
+// const BOARD_SIZE = 20;
+const SLOT_SIZE = 25;
+const COLS = Math.floor(window.innerWidth / SLOT_SIZE);
+const ROWS = Math.floor(window.innerHeight / SLOT_SIZE);
 
 class Board extends Component {
   constructor(props) {
@@ -24,16 +27,19 @@ class Board extends Component {
         },
         tail: [{ x: 0, y: 0 }]
       },
-      speed: 400,
+      speed: 300,
       food: this.relocateFood()
     }
   }
 
   relocateFood = () => {
-    const { boardSize = BOARD_SIZE } = this.props;
+    let x = Math.floor(Math.random() * COLS) - 1
+    let y = Math.floor(Math.random() * ROWS) - 1
+    x = x < 1 ? 1 : x
+    y = y < 1 ? 1 : y
     return {
-      x: Math.floor(Math.random() * boardSize),
-      y: Math.floor(Math.random() * boardSize)
+      x,
+      y
     }
   }
 
@@ -55,17 +61,24 @@ class Board extends Component {
     setTimeout(this.tick, this.state.speed);
   }
 
-  moveSnake = nextPos => {
-    let tail = [nextPos, ...this.state.snake.tail];
+  moveSnake = ({x, y}) => {
+    if (x < 0) x = COLS;
+    if (x > COLS) x = 0;
+    if (y < 0) y = ROWS;
+    if (y > ROWS) y = 0;
+    let tail = [{x, y}, ...this.state.snake.tail];
     tail.pop();
-    this.setState({ snake: { ...this.state.snake, tail, x: nextPos.x, y: nextPos.y } });
+    this.setState({ snake: { ...this.state.snake, tail, x, y } });
   }
 
   enlarge = nextPos => {
     let tail = [nextPos, ...this.state.snake.tail];
+    let speed = this.state.speed;
+    speed = speed <= 40 ? speed : speed - 20;
     this.setState({
       snake: { ...this.state.snake, tail, x: nextPos.x, y: nextPos.y },
-      food: this.relocateFood()
+      food: this.relocateFood(),
+      speed
     });
   }
 
@@ -75,9 +88,8 @@ class Board extends Component {
   }
 
   hitCollision = ({ x, y }) => {
-    const { boardSize = BOARD_SIZE } = this.props;
     const { tail } = this.state.snake;
-    if (x < 0 || y < 0 || x >= boardSize || y >= boardSize || this.hitTail(x, y)) return true;
+    if (this.hitTail(x, y)) return true;
   }
 
   hitTail = (x, y) => {
@@ -122,25 +134,34 @@ class Board extends Component {
 
 
   render() {
-    const { slotSize = 25, boardSize = BOARD_SIZE } = this.props;
-    const swipe = defineSwipe({ swipeDistance: 50 });
-    let slots = [];
-    for (let x = 0; x < boardSize; x++) {
-      for (let y = 0; y < boardSize; y++) {
-        slots.push(<Slot height={slotSize} width={slotSize} x={x} y={y} />)
-      }
-    }
+    // let slots = [
+    //   <Slot height={slotSize} width={slotSize} x={0} y={0} />,
+    //   <Slot height={slotSize} width={slotSize} x={0} y={boardSize} />,
+    //   <Slot height={slotSize} width={slotSize} x={boardSize} y={0} />,
+    //   <Slot height={slotSize} width={slotSize} x={boardSize} y={boardSize} />
+    // ];
+
+    // for (let x = 0; x < boardSize; x++) {
+    //   for (let y = 0; y < boardSize; y++) {
+    //     slots.push(<Slot height={slotSize} width={slotSize} x={x} y={y} />)
+    //   }
+    // }
     return (
       <Swipeable
-        config={swipe}
-        onSwipeLeft={() => this.handleKey(LEFT)}
-        onSwipeRight={() => this.handleKey(RIGHT)}
-        onSwipeDown={() => this.handleKey(DOWN)}
-        onSwipeUp={() => this.handleKey(UP)}>
-        <div style={{ width: '100vh', height: '100vh' }}>
-          {slots}
-          <Snake height={slotSize} width={slotSize} {...this.state.snake} />
-          <Food height={slotSize} width={slotSize} {...this.state.food} />
+        preventDefaultTouchmoveEvent={true}
+        onSwipedLeft={() => this.handleKey(LEFT)}
+        onSwipedRight={() => this.handleKey(RIGHT)}
+        onSwipedDown={() => this.handleKey(DOWN)}
+        onSwipedUp={() => this.handleKey(UP)}>
+        <div style={{
+          width: SLOT_SIZE * COLS + 'px',
+          height: SLOT_SIZE * ROWS + 'px',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+        }}>
+          <Snake height={SLOT_SIZE} width={SLOT_SIZE} {...this.state.snake} />
+          <Food height={SLOT_SIZE} width={SLOT_SIZE} {...this.state.food} />
         </div>
       </Swipeable>
     );
