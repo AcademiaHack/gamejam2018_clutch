@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   shallow do
     resources :games, only: [:index, :create] do
       resources :turns
+      post 'turns/update_user_name' => 'turns#update_user_name'
     end
   end
 

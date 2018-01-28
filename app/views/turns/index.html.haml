@@ -14,12 +14,16 @@
           %th
         - @turn.slot.times do |index|
           %tr
+            %td
             - if @current_slot == index
               %td
+                - if session[:user]['name']
+                  %h2= session[:user]['name']
+                - else
+                  %input{ type: 'field', class: 'player1-name input-player-name', placeholder: 'Insert your name', autocomplete: 'off', value: session[:user] ? session['user']['name'] : '' }
               %td
-                %input{ type: 'field', class: 'player1-name input-player-name', placeholder: 'Insert your name', value: session[:user] ? session['user']['name'] : '' }
-              %td
-                %button.btn-table= 'Ready!'
+                - unless session[:user]['name']
+                  %button#submit-name-button.btn-table{disabled: 'disabled'}= 'Ready!'
             - else
               %td{ colspan: 3 }
                 - if @game.player1&.current_slot == index
@@ -27,8 +31,6 @@
                 - elsif @game.player2&.current_slot == index
                   = @game.player2.name
                 - else
-                  - if @game.audiences&.find_by(current_slot: index)
-                    = @game.audiences.find_by(current_slot: index)&.name
-                  - else
-                    Waiting for other players
+                  - audience = @game.audiences.find_by(current_slot: index)
+                  = audience ? audience.name : "Waiting for other players"
 

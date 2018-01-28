@@ -9,11 +9,23 @@
   font-size: 2rem;
   text-align: center;
   text-decoration: none;
+
+  &:disabled {
+    border-color: #6b6b6b;
+    color: #6b6b6b;
+    
+    &:hover {
+      border-color: #6b6b6b;
+      color: #6b6b6b;
+      cursor: not-allowed;
+    }
+  }
 }
 
 .btn-table:hover {
   color: #484848;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .btn-select-game:focus {
