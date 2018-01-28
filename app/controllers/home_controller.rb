@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  layout 'game', only: [:new_game, :new_player_spreaders, :new_player_strikers]
+  layout 'game'
 
   def index
   end
