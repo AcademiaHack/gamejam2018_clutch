@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  element_player1: MyString
+  element_player2: MyString
+  element_winner: MyString
+  game: one
+  stop_player1: 
+  stop_player: 
+
+two:
+  element_player1: MyString
+  element_player2: MyString
+  element_winner: MyString
+  game: two
+  stop_player1: 
+  stop_player: 
