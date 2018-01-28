@@ -1,0 +1,8 @@
+.container.h-100
+  .row.justify-content-center.align-items-center.align-items-center.h-100
+    .col-sm-8.text-center
+      = form_tag game_join_path, method: :get do
+        .form-group
+          = text_field_tag :code, nil, class: 'input-player-name', placeholder: 'Insert one game code', autocomplete: "off"
+        .form-group
+          = submit_tag 'Enviar', class: 'btn-table btn-block'

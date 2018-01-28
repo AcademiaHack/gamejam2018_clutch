@@ -1,2 +1,7 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.erb
+.container.h-100
+  .row.align-items-center.align-items-center.h-100
+    .col-sm-12.text-center
+      .font-logo
+        Clutch
+      = link_to 'New game', games_create_path, class: 'btn-new-game'
+      = link_to 'Join game', games_join_path, class: 'btn-new-game'

@@ -1,0 +1,56 @@
+// Place all the styles related to the turns controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-table {
+  border: 5px solid #484848;
+  padding: 10px;
+  color: #484848;
+  font-family: 'RumbleBrave';
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-table:hover {
+  color: #484848;
+  text-decoration: none;
+}
+
+.btn-select-game:focus {
+  color: #484848;
+  text-decoration: none;
+}
+
+.btn-select-game {
+  border: 5px solid #484848;
+  padding: 10px;
+  color: #484848;
+  font-family: 'RumbleBrave';
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-select-game:hover {
+  color: #484848;
+  text-decoration: none;
+}
+
+.btn-select-game:focus {
+  color: #484848;
+  text-decoration: none;
+}
+
+.input-player-name {
+  background-color: white;
+  border: none;
+  color: #4E4E4E;
+  font-family: 'RumbleBrave';
+  font-size: 2rem;
+  text-align: center;
+  width: 50%;
+}
+
+.input-player-name:focus {
+  outline: none;
+}
