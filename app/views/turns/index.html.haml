@@ -17,10 +17,18 @@
             - if @current_slot == index
               %td
               %td
-                %input{ type: 'field', class: 'player1-name input-player-name', placeholder: 'Insert your name', value: session[:me]['player'] ? session[:me]['player']['name'] : '' }
+                %input{ type: 'field', class: 'player1-name input-player-name', placeholder: 'Insert your name', value: session[:user] ? session['user']['name'] : '' }
               %td
                 %button.btn-table= 'Ready!'
             - else
               %td{ colspan: 3 }
-                Waiting for other players
+                - if @game.player1&.current_slot == index
+                  = @game.player1.name
+                - elsif @game.player2&.current_slot == index
+                  = @game.player2.name
+                - else
+                  - if @game.audiences&.find_by(current_slot: index)
+                    = @game.audiences.find_by(current_slot: index)&.name
+                  - else
+                    Waiting for other players
 

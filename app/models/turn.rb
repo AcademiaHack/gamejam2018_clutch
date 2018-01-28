@@ -17,11 +17,9 @@
 class Turn < ApplicationRecord
   belongs_to :game
 
-  def take_slot(player)
-    current_slot = slot
-    puts "ANTES!!! #{current_slot}"
+  def take_slot(user)
+    user.update_attribute(:current_slot, slot)
     update_attribute(:slot, slot + 1)
-    puts "DESPUES!!! #{slot}"
-    { player: player, turn: self, slot: current_slot }
+    user
   end
 end

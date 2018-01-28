@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20180128030018) do
     t.string "name"
     t.integer "score"
     t.integer "game_id"
+    t.integer "current_slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_audiences_on_game_id"
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180128030018) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
+    t.integer "current_slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
