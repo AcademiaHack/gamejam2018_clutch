@@ -4,11 +4,18 @@ import Slot from '../slot';
 import Snake from '../snake';
 import Food from '../food';
 
+function convertRemToPixels(rem) {    
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
+
 const DOWN = 40, UP = 38, LEFT = 37, RIGHT = 39;
 // const BOARD_SIZE = 20;
 const SLOT_SIZE = 25;
-const COLS = Math.floor(window.innerWidth / SLOT_SIZE);
-const ROWS = Math.floor(window.innerHeight / SLOT_SIZE);
+const WIDTH = window.innerWidth;
+const HEIGHT = window.innerHeight;
+const PADDING = WIDTH > 767 ? convertRemToPixels(14) : convertRemToPixels(9);
+const COLS = Math.floor((WIDTH - PADDING) / SLOT_SIZE);
+const ROWS = Math.floor((HEIGHT - PADDING) / SLOT_SIZE);
 
 class Board extends Component {
   constructor(props) {
@@ -134,18 +141,6 @@ class Board extends Component {
 
 
   render() {
-    // let slots = [
-    //   <Slot height={slotSize} width={slotSize} x={0} y={0} />,
-    //   <Slot height={slotSize} width={slotSize} x={0} y={boardSize} />,
-    //   <Slot height={slotSize} width={slotSize} x={boardSize} y={0} />,
-    //   <Slot height={slotSize} width={slotSize} x={boardSize} y={boardSize} />
-    // ];
-
-    // for (let x = 0; x < boardSize; x++) {
-    //   for (let y = 0; y < boardSize; y++) {
-    //     slots.push(<Slot height={slotSize} width={slotSize} x={x} y={y} />)
-    //   }
-    // }
     return (
       <Swipeable
         preventDefaultTouchmoveEvent={true}
@@ -156,9 +151,8 @@ class Board extends Component {
         <div style={{
           width: SLOT_SIZE * COLS + 'px',
           height: SLOT_SIZE * ROWS + 'px',
-          position: 'absolute',
-          top: 0,
-          left: 0,
+          position: 'relative',
+          margin: 'auto'
         }}>
           <Snake height={SLOT_SIZE} width={SLOT_SIZE} {...this.state.snake} />
           <Food height={SLOT_SIZE} width={SLOT_SIZE} {...this.state.food} />

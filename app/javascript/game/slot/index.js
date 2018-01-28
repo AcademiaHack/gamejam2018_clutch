@@ -5,13 +5,12 @@ class Slot extends Component {
     const { x, y, height, width, color, zIndex} = this.props;
     return (
       <div style={{
-        border: '0.5px solid',
         height: `${height}px`,
         width: `${width}px`,
         position: 'absolute',
         top: `${y * height}px`,
         left: `${x * width}px`,
-        backgroundColor: color || 'white',
+        backgroundColor: '#484848' || 'white',
         zIndex: zIndex || 1
       }}>
       </div>
