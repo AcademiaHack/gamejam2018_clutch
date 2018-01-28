@@ -1,0 +1,36 @@
+.container
+  .row
+    .col-sm-12
+      .text-center
+        %h1= "Code #{@turn.game.code}"
+  .row.justify-content-center
+    .col-sm-8
+      %table.table.lobby-table
+        %tr
+          %th
+            Field
+          %th
+            Player name
+          %th
+        - @turn.slot.times do |index|
+          %tr
+            %td
+            - if @current_slot == index
+              %td
+                - if session[:user]['name']
+                  %h2= session[:user]['name']
+                - else
+                  %input{ type: 'field', class: 'player1-name input-player-name', placeholder: 'Insert your name', autocomplete: 'off', value: session[:user] ? session['user']['name'] : '' }
+              %td
+                - unless session[:user]['name']
+                  %button#submit-name-button.btn-table{disabled: 'disabled'}= 'Ready!'
+            - else
+              %td{ colspan: 3 }
+                - if @game.player1&.current_slot == index
+                  = @game.player1.name
+                - elsif @game.player2&.current_slot == index
+                  = @game.player2.name
+                - else
+                  - audience = @game.audiences.find_by(current_slot: index)
+                  = audience ? audience.name : "Waiting for other players"
+

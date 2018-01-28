@@ -1,0 +1,16 @@
+@import 'bootstrap';
+@import 'frame';
+@import 'new_game';
+@import 'new_player';
+@import 'turns';
+
+@font-face {
+  font-family: 'RumbleBrave';
+  src:font-url('rumble_brave.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'RumbleBrave';
+}

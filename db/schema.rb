@@ -10,63 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127194533) do
+ActiveRecord::Schema.define(version: 20180128030018) do
 
   create_table "audiences", force: :cascade do |t|
-    t.integer "player_id"
-    t.integer "turn_id"
-    t.integer "score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_audiences_on_player_id"
-    t.index ["turn_id"], name: "index_audiences_on_turn_id"
-  end
-
-  create_table "elements", force: :cascade do |t|
     t.string "name"
+    t.integer "score"
+    t.integer "game_id"
+    t.integer "current_slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "avatar_file_name"
-    t.string "avatar_content_type"
-    t.integer "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.index ["game_id"], name: "index_audiences_on_game_id"
   end
 
   create_table "games", force: :cascade do |t|
-    t.integer "status"
+    t.integer "player1_id"
+    t.integer "player2_id"
+    t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "winner_id"
-    t.index ["winner_id"], name: "index_games_on_winner_id"
+    t.index ["player1_id"], name: "index_games_on_player1_id"
+    t.index ["player2_id"], name: "index_games_on_player2_id"
   end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.integer "game_id"
+    t.integer "current_slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_players_on_game_id"
-  end
-
-  create_table "turn_elements", force: :cascade do |t|
-    t.integer "player_id"
-    t.integer "turn_id"
-    t.integer "element_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["element_id"], name: "index_turn_elements_on_element_id"
-    t.index ["player_id"], name: "index_turn_elements_on_player_id"
-    t.index ["turn_id"], name: "index_turn_elements_on_turn_id"
   end
 
   create_table "turns", force: :cascade do |t|
-    t.integer "status"
+    t.string "element_player1"
+    t.string "element_player2"
+    t.string "element_winner"
     t.integer "game_id"
+    t.boolean "stop_player1"
+    t.boolean "stop_player"
+    t.integer "slot", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "winner_id"
     t.index ["game_id"], name: "index_turns_on_game_id"
-    t.index ["winner_id"], name: "index_turns_on_winner_id"
   end
 
 end

@@ -1,0 +1,26 @@
+.font-logo {
+  font-family: 'RumbleBrave';
+  font-size: 15rem;
+  color: #484848;
+}
+
+.btn-new-game {
+  border: 10px solid #484848;
+  padding: 20px;
+  color: #484848;
+  font-family: 'RumbleBrave';
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-new-game:hover {
+  color: #484848;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .font-logo {
+    font-size: 6rem;
+  }
+}

@@ -1,11 +1,23 @@
+# == Schema Information
+#
+# Table name: audiences
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  score      :integer
+#  game_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  player: one
-  turn: one
+  name: MyString
   score: 1
+  game: one
 
 two:
-  player: two
-  turn: two
+  name: MyString
   score: 1
+  game: two

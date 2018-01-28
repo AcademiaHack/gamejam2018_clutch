@@ -1,6 +1,13 @@
-class Player < ApplicationRecord
-  belongs_to :game
+# == Schema Information
+#
+# Table name: players
+#
+#  id             :integer          not null, primary key
+#  name           :string
+#  current_slot   :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 
-  has_many :audiences
-  has_many :turn_elements
+class Player < ApplicationRecord
 end

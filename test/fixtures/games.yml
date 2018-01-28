@@ -1,7 +1,23 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id         :integer          not null, primary key
+#  player1_id :integer
+#  player2_id :integer
+#  code       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  status: 1
+  player1_id: 1
+  player2_id: 1
+  code: MyString
 
 two:
-  status: 1
+  player1_id: 1
+  player2_id: 1
+  code: MyString
