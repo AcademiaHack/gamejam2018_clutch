@@ -12,36 +12,15 @@
           %th
             Player name
           %th
-        - if @turn.game.player1
+        - @turn.slot.times do |index|
           %tr
-            %td
-            %td
-              - @turn.game.player1&.name
-            %td
-              READY
-        - else
-          %tr
-            %td
-            %td
-              %input{type: 'field', class: 'player1-name input-player-name', placeholder: 'Insert your name'}
-            %td
-              %button.btn-table= 'Ready!'
-        - if @turn.game.player2
-          %tr
-            %td
-            %td
-              - @turn.game.player2&.name
-            %td
-              READY
-        - elsif @turn.game.player1
-          %tr
-            %td
-            %td
-              %input{type: 'field', class: 'player1-name input-player-name', placeholder: 'Insert your name'}
-            %td
-              %button.btn-table= 'Ready!'
-        - else
-          %tr
-            %td.text-center{colspan: 3}
-              Please wait...
+            - if @current_slot == index
+              %td
+              %td
+                %input{ type: 'field', class: 'player1-name input-player-name', placeholder: 'Insert your name', value: session[:me]['player'] ? session[:me]['player']['name'] : '' }
+              %td
+                %button.btn-table= 'Ready!'
+            - else
+              %td{ colspan: 3 }
+                Waiting for other players
 

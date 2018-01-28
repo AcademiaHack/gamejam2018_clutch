@@ -2,10 +2,10 @@ class GamesController < ApplicationController
   layout 'game'
 
   def index
+    session[:me] = nil
   end
 
   def select
-    
   end
 
   def join

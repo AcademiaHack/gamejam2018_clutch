@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180128030018) do
     t.integer "game_id"
     t.boolean "stop_player1"
     t.boolean "stop_player"
+    t.integer "slot", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_turns_on_game_id"
